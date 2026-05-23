@@ -66,32 +66,12 @@
             <!-- Abstract background pattern for luxury brand aesthetic -->
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
             
-            <!-- Interactive Circular Premium Logo Container -->
-            <div class="relative w-36 h-36 mx-auto mb-5 group cursor-pointer" onclick="triggerLogoUpload()" title="Click to upload/change logo">
-                <div class="w-full h-full rounded-full border-2 border-gold/60 bg-white flex justify-center items-center overflow-hidden glow-effect relative">
-                    <!-- Loaded Brand Logo image element -->
-                    <img id="brandLogo" class="hidden w-full h-full object-cover scale-[1.01]" alt="Kabra SmartInvest Logo">
-                    
-                    <!-- Fallback SVG premium investment logo (Displayed by default until user uploads an image) -->
-                    <div id="fallbackLogo" class="flex flex-col items-center text-emerald p-4">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                        </svg>
-                        <span class="text-[9px] font-bold tracking-widest uppercase mt-1 text-center font-serif">Kabra Smart</span>
-                        <span class="text-[7px] text-gray-400 mt-0.5">Click to add Logo</span>
-                    </div>
-
-                    <!-- Subtle Camera hover overlay -->
-                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-white">
-                        <div class="flex flex-col items-center">
-                            <i class="fa-solid fa-camera text-lg"></i>
-                            <span class="text-[8px] uppercase tracking-wider font-semibold mt-1">Upload Logo</span>
-                        </div>
-                    </div>
+            <!-- Static Circular Premium Logo Container -->
+            <div class="relative w-36 h-36 mx-auto mb-5">
+                <div class="w-full h-full rounded-full border-2 border-gold/60 bg-white flex justify-center items-center overflow-hidden glow-effect relative p-2">
+                    <!-- Brand Logo image element -->
+                    <img src="./Logosq.jpg" class="w-full h-full object-contain scale-[1.01]" alt="Kabra SmartInvest Logo" onerror="this.src='https://placehold.co/150x150/ffffff/0c3220?text=Kabra'">
                 </div>
-                
-                <!-- Hidden Upload Input -->
-                <input type="file" id="logoUploadInput" accept="image/*" class="hidden" onchange="loadLogoImage(event)">
             </div>
 
             <!-- Distributor Name -->
@@ -312,45 +292,6 @@
 
     <!-- Script Logic -->
     <script>
-        // Check for previously saved logo on load
-        window.onload = function() {
-            const savedLogo = localStorage.getItem('kabra_brand_logo');
-            if (savedLogo) {
-                const brandImg = document.getElementById('brandLogo');
-                brandImg.src = savedLogo;
-                brandImg.classList.remove('hidden');
-                document.getElementById('fallbackLogo').classList.add('hidden');
-            }
-        };
-
-        // Trigger file upload dialog on click
-        function triggerLogoUpload() {
-            document.getElementById('logoUploadInput').click();
-        }
-
-        // Process file uploaded locally by the user
-        function loadLogoImage(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const resultBase64 = e.target.result;
-                    
-                    // Display uploaded image
-                    const brandImg = document.getElementById('brandLogo');
-                    brandImg.src = resultBase64;
-                    brandImg.classList.remove('hidden');
-                    
-                    // Hide default fallback
-                    document.getElementById('fallbackLogo').classList.add('hidden');
-                    
-                    // Cache Base64 representation in localStorage to persist across refreshes
-                    localStorage.setItem('kabra_brand_logo', resultBase64);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
         // Tab switching controller
         function switchTab(tabId) {
             // Hide all tab contents
