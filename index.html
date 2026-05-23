@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KabraSmart Invest - Akansha Maheshwari</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: '#0c3220',
+                        emerald: '#1b4332',
+                        gold: '#d4af37',
+                        goldHover: '#aa8c2c',
+                        cream: '#f9fbf9',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;700&family=Montserrat:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .custom-shadow {
+            box-shadow: 0 20px 50px rgba(12, 50, 32, 0.2);
+        }
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        /* Tab Fade-In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center font-sans antialiased py-6 px-4">
+
+    <!-- Card Container -->
+    <div class="w-full max-w-md bg-white rounded-3xl overflow-hidden custom-shadow border border-emerald/10 relative">
+        
+        <!-- Header Section with Pattern Cover -->
+        <div class="relative bg-gradient-to-br from-[#051c11] via-emerald to-[#133728] text-white pt-10 pb-8 px-6 text-center">
+            
+            <!-- Abstract background pattern for luxury brand aesthetic -->
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            
+            <!-- Interactive Circular Premium Logo Container -->
+            <div class="relative w-36 h-36 mx-auto mb-5 group cursor-pointer" onclick="triggerLogoUpload()" title="Click to upload/change logo">
+                <div class="w-full h-full rounded-full border-2 border-gold/60 bg-white flex justify-center items-center overflow-hidden glow-effect relative">
+                    <!-- Loaded Brand Logo image element -->
+                    <img id="brandLogo" class="hidden w-full h-full object-cover scale-[1.01]" alt="Kabra SmartInvest Logo">
+                    
+                    <!-- Fallback SVG premium investment logo (Displayed by default until user uploads an image) -->
+                    <div id="fallbackLogo" class="flex flex-col items-center text-emerald p-4">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                        <span class="text-[9px] font-bold tracking-widest uppercase mt-1 text-center font-serif">Kabra Smart</span>
+                        <span class="text-[7px] text-gray-400 mt-0.5">Click to add Logo</span>
+                    </div>
+
+                    <!-- Subtle Camera hover overlay -->
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-white">
+                        <div class="flex flex-col items-center">
+                            <i class="fa-solid fa-camera text-lg"></i>
+                            <span class="text-[8px] uppercase tracking-wider font-semibold mt-1">Upload Logo</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hidden Upload Input -->
+                <input type="file" id="logoUploadInput" accept="image/*" class="hidden" onchange="loadLogoImage(event)">
+            </div>
+
+            <!-- Distributor Name -->
+            <h2 class="text-2xl font-bold tracking-wide mt-2">Akansha Maheshwari</h2>
+            
+            <!-- Job Title -->
+            <p class="text-xs text-gray-300 font-light tracking-widest uppercase mt-1">Mutual Fund Distributor</p>
+            
+            <!-- ARN Number Badge -->
+            <p class="text-[10px] text-gold/90 font-bold tracking-widest uppercase mt-0.5">ARN: 342032</p>
+
+            <!-- Partner Network Badge -->
+            <div class="inline-flex items-center gap-1.5 bg-forest/40 border border-gold/30 rounded-full px-3 py-1 mt-3">
+                <span class="text-[10px] uppercase tracking-wider text-gold font-semibold">Partner Network:</span>
+                <span class="text-[10px] text-white font-medium tracking-wide">NJ Wealth</span>
+            </div>
+            
+            <!-- Gold Accent Border Divider -->
+            <div class="absolute bottom-0 left-0 w-full h-[4px] bg-gradient-to-r from-gold via-yellow-200 to-gold"></div>
+        </div>
+
+        <!-- Quick Contacts Navigation Bar (Sleek Grid Layout) -->
+        <div class="flex justify-around bg-emerald py-3 px-2 border-b border-gold/10 text-center">
+            <!-- Call 1 -->
+            <a href="tel:+917507477722" class="flex flex-col items-center text-white/80 hover:text-gold transition-colors duration-200 w-1/5">
+                <div class="w-8 h-8 rounded-full bg-forest/50 flex items-center justify-center mb-1">
+                    <i class="fa-solid fa-phone text-xs"></i>
+                </div>
+                <span class="text-[9px] uppercase tracking-wider font-semibold">Call 1</span>
+            </a>
+            <!-- Call 2 -->
+            <a href="tel:+918600864008" class="flex flex-col items-center text-white/80 hover:text-gold transition-colors duration-200 w-1/5">
+                <div class="w-8 h-8 rounded-full bg-forest/50 flex items-center justify-center mb-1">
+                    <i class="fa-solid fa-phone text-xs"></i>
+                </div>
+                <span class="text-[9px] uppercase tracking-wider font-semibold">Call 2</span>
+            </a>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/918600864008?text=Hi%20Akansha,%20I'm%20interested%20in%20making%20an%20investment%20through%20KabraSmart%20Invest." target="_blank" class="flex flex-col items-center text-white/80 hover:text-gold transition-colors duration-200 w-1/5">
+                <div class="w-8 h-8 rounded-full bg-forest/50 flex items-center justify-center mb-1">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                </div>
+                <span class="text-[9px] uppercase tracking-wider font-semibold">WhatsApp</span>
+            </a>
+            <!-- Email -->
+            <a href="mailto:akansha18.m@gmail.com" class="flex flex-col items-center text-white/80 hover:text-gold transition-colors duration-200 w-1/5">
+                <div class="w-8 h-8 rounded-full bg-forest/50 flex items-center justify-center mb-1">
+                    <i class="fa-solid fa-envelope text-xs"></i>
+                </div>
+                <span class="text-[9px] uppercase tracking-wider font-semibold">Email</span>
+            </a>
+            <!-- Website Link -->
+            <a href="http://p.njw.bz/97473" target="_blank" class="flex flex-col items-center text-white/80 hover:text-gold transition-colors duration-200 w-1/5">
+                <div class="w-8 h-8 rounded-full bg-forest/50 flex items-center justify-center mb-1">
+                    <i class="fa-solid fa-globe text-xs"></i>
+                </div>
+                <span class="text-[9px] uppercase tracking-wider font-semibold">Website</span>
+            </a>
+        </div>
+
+        <!-- Dynamic Content Tabs Navigation -->
+        <div class="flex border-b border-gray-100 bg-gray-50 text-xs font-semibold text-gray-500">
+            <button onclick="switchTab('about-tab')" id="btn-about-tab" class="flex-1 py-3.5 text-center border-b-2 border-emerald text-emerald transition-all font-bold">About & Services</button>
+            <button onclick="switchTab('sip-tab')" id="btn-sip-tab" class="flex-1 py-3.5 text-center border-b-2 border-transparent hover:text-emerald transition-all">SIP Calculator</button>
+            <button onclick="switchTab('share-tab')" id="btn-share-tab" class="flex-1 py-3.5 text-center border-b-2 border-transparent hover:text-emerald transition-all">Share Card</button>
+        </div>
+
+        <!-- TAB CONTENT CONTAINER -->
+        <div class="p-6 min-h-[300px]">
+
+            <!-- TAB 1: About & Services -->
+            <div id="about-tab" class="tab-content block space-y-5 animate-fadeIn">
+                <div>
+                    <h3 class="text-sm font-bold text-emerald uppercase tracking-wider mb-2">Our Financial Mission</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        At <span class="font-semibold text-emerald">KabraSmart Invest</span>, we specialize in offering tailored mutual fund solutions to match your risk profile and life stages. Partnered with the trusted NJ Wealth platform, we help you secure your future via systematic and strategic planning.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-emerald uppercase tracking-wider mb-3">Key Wealth Solutions</h3>
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 bg-emerald/5 border border-emerald/10 rounded-xl flex items-start gap-2">
+                            <span class="text-gold text-sm mt-0.5"><i class="fa-solid fa-circle-arrow-up"></i></span>
+                            <div>
+                                <span class="font-bold block text-emerald">SIP Investments</span>
+                                <span class="text-[10px] text-gray-500">Regular disciplined wealth building</span>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-emerald/5 border border-emerald/10 rounded-xl flex items-start gap-2">
+                            <span class="text-gold text-sm mt-0.5"><i class="fa-solid fa-piggy-bank"></i></span>
+                            <div>
+                                <span class="font-bold block text-emerald">Tax Savings (ELSS)</span>
+                                <span class="text-[10px] text-gray-500">Save tax under Sec 80C</span>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-emerald/5 border border-emerald/10 rounded-xl flex items-start gap-2">
+                            <span class="text-gold text-sm mt-0.5"><i class="fa-solid fa-graduation-cap"></i></span>
+                            <div>
+                                <span class="font-bold block text-emerald">Children's Future</span>
+                                <span class="text-[10px] text-gray-500">Higher education planning</span>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-emerald/5 border border-emerald/10 rounded-xl flex items-start gap-2">
+                            <span class="text-gold text-sm mt-0.5"><i class="fa-solid fa-umbrella"></i></span>
+                            <div>
+                                <span class="font-bold block text-emerald">Retirement Corpus</span>
+                                <span class="text-[10px] text-gray-500">Peaceful second-innings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Buttons -->
+                <div class="space-y-3 pt-2">
+                    <button onclick="downloadVCF()" class="w-full flex items-center justify-center gap-2.5 bg-emerald hover:bg-forest text-gold font-bold py-3.5 rounded-xl transition duration-200 shadow-md">
+                        <i class="fa-solid fa-user-plus text-sm"></i> Add to Contacts
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 2: SIP Calculator -->
+            <div id="sip-tab" class="tab-content hidden space-y-4 animate-fadeIn">
+                <div class="text-center mb-1">
+                    <h3 class="text-sm font-bold text-emerald uppercase tracking-wider">SIP Compound Calculator</h3>
+                    <p class="text-[11px] text-gray-500">Calculate estimated returns of your investment</p>
+                </div>
+
+                <!-- Input Controls -->
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span class="text-gray-600">Monthly Investment</span>
+                            <span class="text-emerald font-bold" id="monthlyVal">₹5,000</span>
+                        </div>
+                        <input type="range" id="monthlyInput" min="500" max="100000" step="500" value="5000" oninput="calculateSIP()" class="w-full accent-emerald cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span class="text-gray-600">Expected Annual Returns</span>
+                            <span class="text-emerald font-bold" id="rateVal">12%</span>
+                        </div>
+                        <input type="range" id="rateInput" min="5" max="30" step="0.5" value="12" oninput="calculateSIP()" class="w-full accent-emerald cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span class="text-gray-600">Duration</span>
+                            <span class="text-emerald font-bold" id="yearsVal">15 Years</span>
+                        </div>
+                        <input type="range" id="yearsInput" min="1" max="40" step="1" value="15" oninput="calculateSIP()" class="w-full accent-emerald cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Results Output Card -->
+                <div class="bg-emerald/5 border border-emerald/10 rounded-2xl p-4 mt-2 space-y-2.5">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-gray-500 font-medium">Invested Amount:</span>
+                        <span class="text-emerald font-bold text-sm" id="resInvested">₹9,00,000</span>
+                    </div>
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-gray-500 font-medium">Estimated Growth:</span>
+                        <span class="text-emerald font-bold text-sm" id="resGrowth">₹16,22,860</span>
+                    </div>
+                    <div class="border-t border-emerald/10 pt-2 flex justify-between items-center text-sm font-bold">
+                        <span class="text-emerald uppercase tracking-wider">Future Wealth:</span>
+                        <span class="text-gold text-base" id="resTotal">₹25,22,860</span>
+                    </div>
+                </div>
+
+                <div class="text-[9px] text-center text-gray-400 italic">
+                    *Assumed average standard return of diversified equity mutual funds.
+                </div>
+            </div>
+
+            <!-- TAB 3: Share Card -->
+            <div id="share-tab" class="tab-content hidden space-y-5 animate-fadeIn">
+                <div class="text-center">
+                    <h3 class="text-sm font-bold text-emerald uppercase tracking-wider mb-1">Scan or Share This Card</h3>
+                    <p class="text-xs text-gray-500">Perfect to share quickly with prospective investors.</p>
+                </div>
+
+                <!-- Dynamic QR Code pointing to the main website -->
+                <div class="flex justify-center my-3">
+                    <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm relative flex flex-col items-center">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://p.njw.bz/97473&color=0c3220" alt="QR Code" class="w-36 h-36 border border-emerald/5 rounded">
+                        <span class="text-[9px] uppercase tracking-wider text-emerald font-bold mt-2.5">Scan to Visit Website</span>
+                    </div>
+                </div>
+
+                <!-- Actionable Share Buttons -->
+                <div class="space-y-3">
+                    <button onclick="shareViaWhatsApp()" class="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-emerald-600 text-white font-bold py-3 rounded-xl transition duration-200">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Share on WhatsApp
+                    </button>
+                    <button onclick="copyCardLink()" class="w-full flex items-center justify-center gap-2.5 bg-gray-100 hover:bg-gray-200 text-emerald font-bold py-3 rounded-xl transition duration-200 border border-emerald/10">
+                        <i class="fa-solid fa-copy text-sm"></i> <span id="copyText">Copy Card Link</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Social Connections Footer -->
+        <div class="card-footer py-5 px-6 text-center bg-gray-50 border-t border-gray-100">
+            <p class="social-label text-[10px] text-gray-400 uppercase tracking-[2px] font-semibold mb-2">Connect & Learn (SIP Tips)</p>
+            <a href="https://instagram.com/tipofsip" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white font-bold px-4 py-2 rounded-full text-xs shadow hover:scale-105 transition-transform duration-200">
+                <i class="fa-brands fa-instagram text-sm"></i> @tipofsip
+            </a>
+        </div>
+        
+        <!-- Regulatory Compliant Disclaimers -->
+        <div class="bg-[#e9eee9] py-3 px-4 text-center text-[8px] text-gray-500 leading-normal border-t border-emerald/5">
+            Mutual Fund investments are subject to market risks. Please read all scheme related documents carefully before investing.
+        </div>
+    </div>
+
+    <!-- Script Logic -->
+    <script>
+        // Check for previously saved logo on load
+        window.onload = function() {
+            const savedLogo = localStorage.getItem('kabra_brand_logo');
+            if (savedLogo) {
+                const brandImg = document.getElementById('brandLogo');
+                brandImg.src = savedLogo;
+                brandImg.classList.remove('hidden');
+                document.getElementById('fallbackLogo').classList.add('hidden');
+            }
+        };
+
+        // Trigger file upload dialog on click
+        function triggerLogoUpload() {
+            document.getElementById('logoUploadInput').click();
+        }
+
+        // Process file uploaded locally by the user
+        function loadLogoImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const resultBase64 = e.target.result;
+                    
+                    // Display uploaded image
+                    const brandImg = document.getElementById('brandLogo');
+                    brandImg.src = resultBase64;
+                    brandImg.classList.remove('hidden');
+                    
+                    // Hide default fallback
+                    document.getElementById('fallbackLogo').classList.add('hidden');
+                    
+                    // Cache Base64 representation in localStorage to persist across refreshes
+                    localStorage.setItem('kabra_brand_logo', resultBase64);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Tab switching controller
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+                tab.classList.remove('block');
+            });
+
+            // Remove active classes from navigation buttons
+            document.querySelectorAll('[id^="btn-"]').forEach(btn => {
+                btn.className = "flex-1 py-3.5 text-center border-b-2 border-transparent hover:text-emerald text-gray-500 transition-all font-semibold";
+            });
+
+            // Show target tab
+            const activeTab = document.getElementById(tabId);
+            activeTab.classList.remove('hidden');
+            activeTab.classList.add('block');
+
+            // Apply selected styling on the active button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.className = "flex-1 py-3.5 text-center border-b-2 border-emerald text-emerald transition-all font-bold";
+            
+            // Execute calculation if user switched to SIP Calculator
+            if(tabId === 'sip-tab') {
+                calculateSIP();
+            }
+        }
+
+        // Realtime SIP Calculator Math Formula
+        function calculateSIP() {
+            const monthlyInput = document.getElementById('monthlyInput');
+            const rateInput = document.getElementById('rateInput');
+            const yearsInput = document.getElementById('yearsInput');
+
+            const monthlyInvest = parseFloat(monthlyInput.value);
+            const annualRate = parseFloat(rateInput.value);
+            const years = parseInt(yearsInput.value);
+
+            // Update Label Text Elements
+            document.getElementById('monthlyVal').innerText = "₹" + monthlyInvest.toLocaleString('en-IN');
+            document.getElementById('rateVal').innerText = annualRate + "%";
+            document.getElementById('yearsVal').innerText = years + " Years";
+
+            // Calculation Core Model
+            const monthlyRate = (annualRate / 12) / 100;
+            const months = years * 12;
+
+            // Compound Formula for SIP: M * [((1 + i)^n - 1) / i] * (1 + i)
+            const futureVal = monthlyInvest * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+            const totalInvested = monthlyInvest * months;
+            const growthEarned = futureVal - totalInvested;
+
+            // Formatting Values nicely
+            document.getElementById('resInvested').innerText = "₹" + Math.round(totalInvested).toLocaleString('en-IN');
+            document.getElementById('resGrowth').innerText = "₹" + Math.round(growthEarned).toLocaleString('en-IN');
+            document.getElementById('resTotal').innerText = "₹" + Math.round(futureVal).toLocaleString('en-IN');
+        }
+
+        // Contact vCard generator (.vcf download)
+        function downloadVCF() {
+            const vcard = 
+                "BEGIN:VCARD\r\n" +
+                "VERSION:3.0\r\n" +
+                "FN:Akansha Maheshwari - KabraSmart Invest\r\n" +
+                "ORG:KabraSmart Invest (NJ Wealth Partner)\r\n" +
+                "TITLE:Mutual Fund Distributor (ARN: 342032)\r\n" +
+                "TEL;TYPE=CELL,VOICE:+917507477722\r\n" +
+                "TEL;TYPE=CELL,VOICE:+918600864008\r\n" +
+                "EMAIL;TYPE=PREF,INTERNET:akansha18.m@gmail.com\r\n" +
+                "URL:http://p.njw.bz/97473\r\n" +
+                "END:VCARD";
+            
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = URL.createObjectURL(blob);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = "Akansha_KabraSmartInvest.vcf";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+
+        // Copy card link to clipboard
+        function copyCardLink() {
+            const dummyLink = "http://p.njw.bz/97473";
+            
+            // Standard execution fallback safe copy
+            const el = document.createElement('textarea');
+            el.value = dummyLink;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            const copyText = document.getElementById('copyText');
+            copyText.innerText = "Link Copied!";
+            setTimeout(() => {
+                copyText.innerText = "Copy Card Link";
+            }, 2000);
+        }
+
+        // WhatsApp Custom Message Share
+        function shareViaWhatsApp() {
+            const baseText = "Check out KabraSmart Invest digital business card for smart wealth generation solutions and investment tracking: http://p.njw.bz/97473";
+            window.open(`https://wa.me/?text=${encodeURIComponent(baseText)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
